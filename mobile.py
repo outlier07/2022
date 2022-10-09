@@ -28,16 +28,17 @@ def send_mail():
     server.ehlo()
     server.starttls()
     server.ehlo()
-
-    server.login('hiddenoutliers@gmail.com', password)         # need to allow less secure app for google
+    mail_sender = os.environ.get("mail01")
+    mail_receiver = os.environ.get("mail02")
+    server.login(mail_sender, password)         # need to allow less secure app for google
     subject = 'Price fell down below Rs. 20k!!!'
     body = 'Check this out, Hurry !!!  {url_note11}'
 
     msg = f"Subject: {subject}\n\n {body}"
 
     server.sendmail(
-        'hiddenoutliers@gmail.com',
-        'shukla.prashant689@gmail.com',
+        mail_sender,
+        mail_receiver,
         msg
     )
 

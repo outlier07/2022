@@ -1,18 +1,17 @@
 import requests
 import os
 from bs4 import BeautifulSoup
-import smtplib      # simple mail transfer protocol
+import smtplib
 
-url_note11 = "https://www.amazon.in/dp/B09T39K9YL/?coliid=I8ULCYCWPW7J2&colid=22A2JM4X9UDIB&psc=1&ref_=lv_ov_lig_dp_it"
-url_note10 = "https://www.amazon.in/dp/B089MT35TK/?coliid=I3AO1U5OD5G5JM&colid=22A2JM4X9UDIB&psc=1&ref_=lv_ov_lig_dp_it"
-
+prod_1 = "url"
+prod_2 = "url"
 headers = {
     "User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
 }
 dprice = 20001
 password = os.environ.get("password")
 def check_price():
-    page = requests.get(url_note11, headers = headers)
+    page = requests.get(prod_2, headers = headers)
     soup = BeautifulSoup(page.content, 'html.parser')
     title = soup.find(id='productTitle').get_text()
     price = soup.find(id='priceblock_ourprice').get_text()
